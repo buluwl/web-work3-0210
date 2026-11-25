@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<!--
+    作业三 · 晨光阅读会 Morning Reading Club
+    姓名：姚金言    学号：202511160210（末位 0）    班级：计工本2502
+    文件名：yao-0210-work3.html
+-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>晨光阅读会 · Morning Reading Club | 姚金言 Work3</title>
+    <style>
+        /* ==================== 基础重置 ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ==================== 页面底色：暖亚麻色，衬托爱马仕橙主页面 ==================== */
+        body {
+            padding: 56px 20px 64px;
+            background-color: #F2E6D6;
+            background-image:
+                radial-gradient(circle at 12% 8%, rgba(255, 165, 76, 0.28) 0%, transparent 38%),
+                radial-gradient(circle at 88% 92%, rgba(255, 165, 76, 0.20) 0%, transparent 40%),
+                linear-gradient(180deg, #F7EEE1 0%, #EDDFC9 100%);
+            background-attachment: fixed;
+            font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            font-size: 15px;
+            line-height: 1.9;
+            color: #3B2717;
+            text-align: center;
+        }
+
+        /* ==================== 作业要求 3：.page 样式 ====================
+           除 background-color 按学号末位 0 改为 #FFA54C 外，
+           其余属性与说明文档完全一致，未做任何改动。 */
+        .page {
+            display: inline-block;
+            background-color: #FFA54C;
+            box-shadow: 0 0 30px rgba(80, 58, 35, 0.25);
+            text-align: left;
+            max-width: 720px;
+        }
+
+        /* 页面内部容器：承担内边距，保证 .page 本身不被修改 */
+        .frame {
+            width: 720px;
+            max-width: calc(100vw - 48px);
+            margin: 0 auto;
+            padding: 0;
+            text-align: left;
+        }
+
+        /* ==================== 顶部标题区 ==================== */
+        .hero {
+            margin: 0;
+            padding: 54px 56px 46px;
+            background-color: #2A1608;
+            background-image: radial-gradient(circle at 50% -10%, rgba(255, 165, 76, 0.28) 0%, transparent 62%);
+            border-bottom: 3px solid #C08A2E;
+            text-align: center;
+        }
+
+        .kicker {
+            margin-bottom: 20px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 0.34em;
+            text-transform: uppercase;
+            color: #E2A45F;
+        }
+
+        /* ==================== 作业要求 5③：并集选择器 ==================== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Palatino Linotype", "Book Antiqua", "Songti SC", "STSong", "SimSun", serif;
+            font-weight: 700;
+            color: #2A1608;
+            line-height: 1.35;
+            letter-spacing: 0.08em;
+        }
+
+        .hero h1 {
+            margin-bottom: 18px;
+            padding-left: 0.18em;
+            font-size: 46px;
+            letter-spacing: 0.18em;
+            color: #FFF6E9;
+            text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
+        }
+
+        .hero h1::after {
+            content: "";
+            display: block;
+            width: 58px;
+            height: 2px;
+            margin: 22px auto 0;
+            background-color: #C08A2E;
+        }
+
+        .tagline {
+            margin-bottom: 24px;
+            font-family: "Kaiti SC", "STKaiti", "KaiTi", "楷体", serif;
+            font-size: 17px;
+            letter-spacing: 0.1em;
+            color: #F0D9B8;
+            text-wrap: balance;
+        }
+
+        .hero-meta {
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 246, 233, 0.16);
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            color: rgba(255, 246, 233, 0.66);
+            text-wrap: balance;
+        }
+
+        /* ==================== 连续正文纸面 ==================== */
+        .sheet {
+            margin: 0;
+            background-color: #FFF9EF;
+        }
+
+        .block {
+            padding: 40px 56px 20px;
+        }
+
+        .intro {
+            padding-bottom: 8px;
+        }
+
+        .members {
+            padding-top: 28px;
+        }
+
+        .eyebrow {
+            margin-bottom: 10px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #A56A2A;
+        }
+
+        h2, h3 {
+            position: relative;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(42, 22, 8, 0.18);
+        }
+
+        h2 {
+            font-size: 25px;
+        }
+
+        h3 {
+            font-size: 20px;
+        }
+
+        h2::after,
+        h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 56px;
+            height: 2px;
+            background-color: #C08A2E;
+        }
+
+        .block p {
+            margin-bottom: 15px;
+            color: #4A3423;
+            text-align: justify;
+        }
+
+        .block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ==================== 作业要求 5④：ID 选择器，重要提示强调 ==================== */
+        p#intro {
+            margin: 22px 0 0;
+            padding: 16px 20px;
+            background-color: #FFEFD6;
+            border-left: 4px solid #A8281A;
+            color: #7A2410;
+            font-size: 15.5px;
+            font-weight: 700;
+            line-height: 1.85;
+        }
+
+        /* ==================== 清晨金句 ==================== */
+        .pullquote {
+            margin: 26px 0 0;
+            padding: 26px 40px;
+            background-image: linear-gradient(180deg, #FFF9EF 0%, #FFC98E 24%, #FFA54C 50%, #FFC98E 76%, #FFF9EF 100%);
+            font-family: "Kaiti SC", "STKaiti", "KaiTi", "楷体", serif;
+            font-size: 21px;
+            line-height: 1.8;
+            letter-spacing: 0.1em;
+            color: #2A1608;
+            text-align: center;
+        }
+
+        /* ==================== 成员表格 ==================== */
+        .table-wrap {
+            margin-top: 4px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        th {
+            padding: 12px 14px;
+            background-color: #2A1608;
+            color: #FFF3E2;
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            white-space: nowrap;
+            text-align: left;
+        }
+
+        td {
+            padding: 13px 14px;
+            border-bottom: 1px solid #EBD8BC;
+            color: #46301F;
+            transition: background-color 0.25s ease;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #FFF3E1;
+        }
+
+        tr:hover td {
+            background-color: #FFE6C6;
+        }
+
+        td:first-child {
+            font-family: Georgia, "Times New Roman", serif;
+            color: #A56A2A;
+        }
+
+        /* ==================== 页面链接区 ==================== */
+        .links {
+            padding: 12px 56px 50px;
+            text-align: center;
+        }
+
+        .link-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 6px;
+        }
+
+        /* ==================== 底部公告区 ==================== */
+        .notice {
+            margin: 0;
+            padding: 44px 56px 46px;
+            background-color: #2A1608;
+            background-image: radial-gradient(circle at 100% 0%, rgba(255, 165, 76, 0.18) 0%, transparent 55%);
+            border-top: 3px solid #C08A2E;
+            border-bottom: 3px solid #C08A2E;
+            text-align: left;
+        }
+
+        .notice h4 {
+            margin-bottom: 16px;
+            font-size: 13px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: #F3C98A;
+        }
+
+        .notice p {
+            margin-bottom: 12px;
+            font-size: 13.5px;
+            line-height: 2;
+            color: rgba(241, 223, 199, 0.9);
+        }
+
+        .notice p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ==================== 页脚信息 ==================== */
+        .footer {
+            margin: 0;
+            padding: 34px 56px 38px;
+            background-color: #FFA54C;
+            background-image:
+                radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0) 60%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(120, 50, 0, 0.10) 100%);
+            font-size: 11.5px;
+            line-height: 2;
+            letter-spacing: 0.08em;
+            color: #4A2A12;
+            text-align: center;
+        }
+
+        .footer-mark {
+            margin-bottom: 10px;
+            font-family: "Palatino Linotype", "Book Antiqua", "Songti SC", "STSong", "SimSun", serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            color: #4A2A12;
+        }
+
+        /* ==================== 作业要求 5②：链接伪类 ==================== */
+        a:link {
+            color: #8A4A16;
+            text-decoration: underline;
+            text-decoration-color: rgba(192, 138, 46, 0.7);
+            text-underline-offset: 4px;
+        }
+
+        a:visited {
+            color: #6A4E7C;
+        }
+
+        a:hover {
+            color: #A8281A;
+            text-decoration-color: #A8281A;
+        }
+
+        a:active {
+            color: #123A5A;
+        }
+
+        a:focus-visible {
+            outline: 3px solid #2A1608;
+            outline-offset: 3px;
+        }
+
+        /* ==================== 作业要求 5⑤：带类名的链接 ==================== */
+        a.red {
+            display: inline-block;
+            padding: 13px 28px;
+            border-radius: 2px;
+            background-color: #8E1B12;
+            color: #FFF6E9;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            box-shadow: 0 5px 0 #5B0F09;
+            transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        a.red:hover {
+            background-color: #A8281A;
+            color: #FFF6E9;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0 #5B0F09;
+        }
+
+        a.blue {
+            display: inline-block;
+            padding: 13px 28px;
+            border-radius: 2px;
+            background-color: #123A5A;
+            color: #FFF6E9;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            box-shadow: 0 5px 0 #0A2236;
+            transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        a.blue:hover {
+            background-color: #17496F;
+            color: #FFF6E9;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0 #0A2236;
+        }
+
+        /* ==================== 作业要求 5①：后代选择器 ====================
+           只有 div 里的 table 中出现超链接时才触发此样式 */
+        div table a {
+            padding: 1px 2px;
+            border-radius: 2px;
+            font-weight: 600;
+            text-decoration-style: dotted;
+            text-decoration-thickness: 2px;
+            transition: background-color 0.25s ease;
+        }
+
+        div table a:hover {
+            background-color: #FFF0D6;
+        }
+
+        /* ==================== 作业要求 5⑥：伪元素 ==================== */
+        p::first-letter {
+            font-size: 1.18em;
+            font-weight: 700;
+        }
+
+        .block p::first-letter {
+            color: #9A2A14;
+        }
+
+        div::first-line {
+            letter-spacing: 0.02em;
+        }
+
+        /* ==================== 响应式 ==================== */
+        @media (max-width: 560px) {
+            body {
+                padding: 20px 12px 32px;
+            }
+
+            .frame {
+                max-width: calc(100vw - 24px);
+                padding: 0;
+            }
+
+            .hero {
+                margin: 0;
+                padding: 38px 20px 32px;
+            }
+
+            .sheet {
+                margin: 0;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+                letter-spacing: 0.12em;
+                padding-left: 0.12em;
+            }
+
+            .block {
+                padding: 30px 20px 16px;
+            }
+
+            .intro {
+                padding-bottom: 4px;
+            }
+
+            .members {
+                padding-top: 20px;
+            }
+
+            .links {
+                padding: 10px 20px 36px;
+            }
+
+            .notice {
+                margin: 0;
+                padding: 32px 20px 34px;
+            }
+
+            .pullquote {
+                margin: 18px 0 0;
+                padding: 20px 8px;
+                font-size: 17px;
+            }
+
+            h2 {
+                font-size: 21px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            .footer {
+                margin: 0;
+                padding: 26px 20px 30px;
+                font-size: 10.5px;
+            }
+
+            .footer-mark {
+                font-size: 15px;
+                margin-bottom: 8px;
+            }
+
+            th:nth-child(1),
+            td:nth-child(1) {
+                display: none;
+            }
+
+            th,
+            td {
+                padding: 10px;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+            .link-row {
+                gap: 12px;
+            }
+
+            a.red,
+            a.blue {
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+        <div class="frame">
+
+            <!-- ① 顶部标题区：div 内包含 h1 主标题 -->
+            <div class="hero">
+                <div class="kicker">Morning Reading Club · 2026 Autumn</div>
+                <h1>晨光阅读会</h1>
+                <p class="tagline">在清晨的第一缕光里，与一本书安静相遇。</p>
+                <div class="hero-meta">每周一至周五 06:30 — 07:30 ｜ 图书馆三楼 · 晨光阅览室</div>
+            </div>
+
+            <div class="sheet">
+
+            <!-- ② 活动介绍区 -->
+            <div class="block intro">
+                <div class="eyebrow">About the Club</div>
+                <h2 id="intro">关于晨光阅读会</h2>
+                <p>清晨六点半，校园还没有完全醒来。晨光阅读会在图书馆三楼的窗边留一盏灯，把一天里最安静的时光交给书页。这里没有必须完成的书单，只有一段不被打扰的阅读，和一群愿意早起的同伴。</p>
+                <p>每周一至周五，我们带着各自正在读的书围坐在一起：前四十分钟安静阅读，最后二十分钟分享一句最想留下的话。你可以读诗、读小说，也可以只是来坐一会儿，让清晨慢一点开始。</p>
+                <!-- 说明：作业要求②同时指定 h2 与 p 使用 id="intro"，此处按原文保留（HTML 规范中 id 应当唯一） -->
+                <p id="intro">重要提示：本期晨读会限 24 人，请提前 10 分钟签到；连续两次未签到，名额将顺延给候补同学。首次参加请携带学生证，并在前台登记。</p>
+            </div>
+
+            <div class="pullquote">「 清晨的阅读，是一天里最安静的开始 」</div>
+
+            <!-- ③ 活动报名信息表格区 -->
+            <div class="block members">
+                <div class="eyebrow">This Week</div>
+                <h3>本期晨读成员</h3>
+                <div class="table-wrap">
+                    <table>
+                        <tr>
+                            <th>编号</th>
+                            <th>姓名</th>
+                            <th>共读书目</th>
+                            <th>报名状态</th>
+                        </tr>
+                        <tr>
+                            <td>01</td>
+                            <td>林小满</td>
+                            <td><a href="https://book.douban.com/subject_search?search_text=%E7%93%A6%E5%B0%94%E7%99%BB%E6%B9%96">《瓦尔登湖》</a></td>
+                            <td>已确认</td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>陈亦然</td>
+                            <td><a href="https://book.douban.com/subject_search?search_text=%E4%BA%BA%E9%97%B4%E8%8D%89%E6%9C%A8">《人间草木》</a></td>
+                            <td>已确认</td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>Emily</td>
+                            <td><a href="https://book.douban.com/subject_search?search_text=The%20Little%20Prince">《The Little Prince》</a></td>
+                            <td>已确认</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ④ 页面链接区 -->
+            <div class="block links">
+                <div class="eyebrow">More</div>
+                <div class="link-row">
+                    <a class="red" href="https://hongchenwusdnu.github.io/bookstore/job4.html">查看往期活动照片</a>
+                    <a class="blue" href="yao-0210-work3.html">在线咨询活动详情</a>
+                </div>
+            </div>
+
+            </div>
+
+            <!-- ⑤ 底部公告区：div class="notice"，至少三段公告文本，含 br 换行 -->
+            <div class="notice">
+                <h4>公告栏 · Notice</h4>
+                <p>晨光阅读会本学期开放至 12 月 18 日，每周一至周五 06:30—07:30。<br>地点为图书馆三楼晨光阅览室，节假日安排将提前三天更新。</p>
+                <p>请自备水杯与正在阅读的书，进入阅览室后将手机调至静音；<br>如需请假，请提前一天在群内留言，把座位留给候补的同学。</p>
+                <p>本期新增「晨光书签」交换角：带一枚旧书签来，<br>换走一段陌生同学写下的清晨句子。</p>
+            </div>
+
+            <div class="footer">
+                <div class="footer-mark">晨光阅读会 · Morning Reading Club</div>
+                <div>计工本2502 · 姚金言 · 202511160210</div>
+                <div>Web 前端上机作业 Work3 · 文件名 yao-0210-work3.html</div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

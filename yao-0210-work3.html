@@ -117,10 +117,12 @@
             text-wrap: balance;
         }
 
-        /* ==================== 连续正文纸面 ==================== */
+        /* ==================== 正文区：直接透出 .page 的爱马仕橙底色 ====================
+           学号末位 0 要求页面背景色为 #FFA54C，这里不再覆盖底色，
+           让 .page 的橙色的的确确成为页面背景。 */
         .sheet {
             margin: 0;
-            background-color: #FFF9EF;
+            background-color: transparent;
         }
 
         .block {
@@ -141,14 +143,14 @@
             font-weight: 600;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: #A56A2A;
+            color: #3A1D04;
         }
 
         h2, h3 {
             position: relative;
             margin-bottom: 18px;
             padding-bottom: 12px;
-            border-bottom: 1px solid rgba(42, 22, 8, 0.18);
+            border-bottom: 1px solid rgba(42, 22, 8, 0.32);
         }
 
         h2 {
@@ -167,12 +169,12 @@
             bottom: -1px;
             width: 56px;
             height: 2px;
-            background-color: #C08A2E;
+            background-color: #8A3B00;
         }
 
         .block p {
             margin-bottom: 15px;
-            color: #4A3423;
+            color: #2E1B0C;
             text-align: justify;
         }
 
@@ -184,19 +186,23 @@
         p#intro {
             margin: 22px 0 0;
             padding: 16px 20px;
-            background-color: #FFEFD6;
+            background-color: #FFF4E4;
             border-left: 4px solid #A8281A;
             color: #7A2410;
             font-size: 15.5px;
             font-weight: 700;
             line-height: 1.85;
+            box-shadow: 0 4px 14px rgba(80, 40, 0, 0.12);
         }
 
         /* ==================== 清晨金句 ==================== */
         .pullquote {
             margin: 26px 0 0;
             padding: 26px 40px;
-            background-image: linear-gradient(180deg, #FFF9EF 0%, #FFC98E 24%, #FFA54C 50%, #FFC98E 76%, #FFF9EF 100%);
+            background-color: #FFF3E2;
+            background-image: linear-gradient(180deg, #FFF9EF 0%, #FFE9CF 100%);
+            border-top: 1px solid rgba(42, 22, 8, 0.10);
+            border-bottom: 1px solid rgba(42, 22, 8, 0.10);
             font-family: "Kaiti SC", "STKaiti", "KaiTi", "楷体", serif;
             font-size: 21px;
             line-height: 1.8;
@@ -214,8 +220,10 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            background-color: #FFF9EF;
             font-size: 14px;
             text-align: left;
+            box-shadow: 0 8px 22px rgba(80, 40, 0, 0.16);
         }
 
         th {
@@ -231,8 +239,8 @@
 
         td {
             padding: 13px 14px;
-            border-bottom: 1px solid #EBD8BC;
-            color: #46301F;
+            border-bottom: 1px solid #E7D2B4;
+            color: #3A2413;
             transition: background-color 0.25s ease;
         }
 
@@ -574,11 +582,13 @@
                 </div>
             </div>
 
-            <!-- ④ 页面链接区 -->
+            <!-- ④ 页面链接区
+                 按老师更正：查看往期活动照片 → 本人上次的 work2 页面；
+                 在线咨询活动详情 → 本次第三次作业 yao-0210-work3.html -->
             <div class="block links">
                 <div class="eyebrow">More</div>
                 <div class="link-row">
-                    <a class="red" href="https://hongchenwusdnu.github.io/bookstore/job4.html">查看往期活动照片</a>
+                    <a class="red" href="https://buluwl.github.io/webwork2-yao0210/yao-0210-work2.html">查看往期活动照片</a>
                     <a class="blue" href="yao-0210-work3.html">在线咨询活动详情</a>
                 </div>
             </div>
